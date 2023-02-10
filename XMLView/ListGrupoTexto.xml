@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view>
+    <columns>
+        <column name="idgrupotexto" display="none" order="100">
+            <widget type="text" fieldname="idgrupotexto" />
+        </column>
+        <column name="group-name" order="110">
+            <widget type="text" fieldname="nombregrupo" />
+        </column>
+        <column name="date" order="120">
+            <widget type="date" fieldname="fecha" />
+        </column>
+    </columns>
+</view>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view>
+    <columns>
+        <column name="idtexto" display="none" order="100">
+            <widget type="text" fieldname="idtexto" />
+        </column>
+         <column name="text-name" order="110">
+            <widget type="text" fieldname="nombretexto" />
+        </column>
+        <column name="notes" order="120">
+            <widget type="textarea" fieldname="note" />
+        </column>
+       <column name="grup" title="group-name" order="130" >
+                <widget type="select" fieldname="idgrupotexto" onclick="EditGrupoTexto" >
+                    <values source="grupostextos" fieldcode="idgrupotexto" fieldtitle="nombregrupo"/>
+                </widget>
+         </column>
+        <column name="date" order="140">
+            <widget type="date" fieldname="fecha" />
+        </column>
+    </columns>
+</view>

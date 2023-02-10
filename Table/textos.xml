@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table>
+    <column>
+        <name>idtexto</name>
+        <type>serial</type>
+    </column>
+    <column>
+        <name>nombretexto</name>
+        <type>character varying(50)</type>
+    </column>
+    <column>
+        <name>idgrupotexto</name>
+        <type>integer</type>
+    </column>
+    <column>
+        <name>fecha</name>
+        <type>date</type>
+    </column>
+	<column>
+        <name>note</name>
+        <type>text</type>
+    </column>
+    <constraint>
+        <name>textos_pkey</name>
+        <type>PRIMARY KEY (idtexto)</type>
+    </constraint>
+	<constraint>
+        <name>ca_textosos_grupostextos</name>
+        <type>FOREIGN KEY (idgrupotexto) REFERENCES grupostextos (idgrupotexto) ON DELETE RESTRICT ON UPDATE CASCADE</type>
+    </constraint>
+</table>
