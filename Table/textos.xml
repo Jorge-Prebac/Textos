@@ -25,7 +25,7 @@
         <type>PRIMARY KEY (idtexto)</type>
     </constraint>
 	<constraint>
-        <name>ca_textosos_grupostextos</name>
+        <name>ca_textos_grupostextos</name>
         <type>FOREIGN KEY (idgrupotexto) REFERENCES grupostextos (idgrupotexto) ON DELETE RESTRICT ON UPDATE CASCADE</type>
     </constraint>
 </table>
