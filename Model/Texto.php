@@ -21,7 +21,6 @@ class Texto extends ModelClass
     public function clear()
 	{
         parent::clear();
-        $this->idgrupotexto = 0;
         $this->fecha = date(ModelClass::DATE_STYLE);
     }
 
