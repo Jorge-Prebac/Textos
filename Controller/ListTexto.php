@@ -14,7 +14,10 @@ class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListControll
 
     protected function createViews()
     {
-        $this->createViewsTexto();
+		if ($this->user->can('ListTexto')) {
+			//el usuario tiene acceso
+			$this->createViewsTexto();
+		};
     }
 
     protected function createViewsTexto(string $viewName = "ListTexto")
