@@ -1,5 +1,7 @@
 <?php
 namespace FacturaScripts\Plugins\Textos\Controller;
+
+use FacturaScripts\Core\Session;
 use FacturaScripts\Core\Lib\ExtendedController\EditController;
 use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
 
@@ -19,7 +21,9 @@ class EditGrupoTexto extends EditController
 	public function createViews()
     {
 		parent::createViews();
-		if ($this->user->can('ListTexto')) {
+
+		$user = Session::get('user');
+		if (!false == $user->can('ListTexto')) {
 			//el usuario tiene acceso
 			$this->createViewsListTextos();
 			$this->setTabsPosition('left-bottom');

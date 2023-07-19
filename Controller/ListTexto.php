@@ -1,6 +1,8 @@
 <?php
 namespace FacturaScripts\Plugins\Textos\Controller;
 
+use FacturaScripts\Core\Session;
+
 class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListController
 {
     public function getPageData(): array
@@ -14,7 +16,8 @@ class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListControll
 
     protected function createViews()
     {
-		if ($this->user->can('ListTexto')) {
+		$user = Session::get('user');
+		if (!false == $user->can('ListTexto')) {
 			//el usuario tiene acceso
 			$this->createViewsTexto();
 		};
