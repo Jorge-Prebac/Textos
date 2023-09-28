@@ -35,18 +35,40 @@ class GrupoTexto extends ModelClass
         return "grupostextos";
     }
 	
-		public function save(): bool
+	public function save(): bool
     {
-		// add audit log
-			self::toolBox()::i18nLog(self::AUDIT_CHANNEL)->info('updated-model', [
-				'%model%' => $this->modelClassName(),
-				'%key%' => $this->primaryColumnValue(),
-				'%desc%' => $this->primaryDescription(),
-				'model-class' => $this->modelClassName(),
-				'model-code' => $this->primaryColumnValue(),
-				'model-data' => $this->toArray()
-			]);
 
-		return parent::save();
+        // Save audit log
+        $this->saveAuditMessage('updated-model');
+
+        if (false === parent::save()) {
+            return false;
+        }
+
+		return true;
+    }
+
+	public function delete(): bool
+    {
+        if (false === parent::delete()) {
+            return false;
+        }
+
+        // Save audit log
+        $this->saveAuditMessage('deleted-model');
+
+        return true;
+    }
+
+	protected function saveAuditMessage(string $message)
+    {
+        self::toolBox()::i18nLog(self::AUDIT_CHANNEL)->info($message, [
+            '%model%' => $this->modelClassName(),
+            '%key%' => $this->primaryColumnValue(),
+            '%desc%' => $this->primaryDescription(),
+            'model-class' => $this->modelClassName(),
+            'model-code' => $this->primaryColumnValue(),
+            'model-data' => $this->toArray()
+        ]);
     }
 }
