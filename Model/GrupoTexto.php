@@ -25,6 +25,11 @@ class GrupoTexto extends ModelClass
         return "idgrupotexto";
     }
 
+	public function primaryDescriptionColumn(): string
+	{
+		return 'nombregrupo';
+	}
+
     public static function tableName(): string
 	{
         return "grupostextos";

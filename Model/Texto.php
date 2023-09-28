@@ -29,6 +29,11 @@ class Texto extends ModelClass
         return "idtexto";
     }
 
+	public function primaryDescriptionColumn(): string
+	{
+		return 'nombretexto';
+	}
+
     public static function tableName(): string
 	{
         return "textos";
