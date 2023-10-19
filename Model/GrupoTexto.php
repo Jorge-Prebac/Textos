@@ -37,13 +37,13 @@ class GrupoTexto extends ModelClass
 	
 	public function save(): bool
     {
+        if (false === parent::save()) {
+            return false;
+        }
 
         // Save audit log
         $this->saveAuditMessage('updated-model');
 
-        if (false === parent::save()) {
-            return false;
-        }
 
 		return true;
     }
