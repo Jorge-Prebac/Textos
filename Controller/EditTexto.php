@@ -13,6 +13,7 @@ class EditTexto extends EditController
     public function getPageData(): array 
 	{
         $data = parent::getPageData();
+		$data["menu"] = "texts";
         $data["title"] = "texts";
         $data["icon"] = "fas fa-spell-check";
         return $data;

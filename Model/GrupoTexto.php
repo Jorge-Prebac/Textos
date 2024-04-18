@@ -1,6 +1,7 @@
 <?php
 namespace FacturaScripts\Plugins\Textos\Model;
 
+use FacturaScripts\Core\Tools;
 use FacturaScripts\Core\Model\Base\ModelClass;
 use FacturaScripts\Core\Model\Base\ModelTrait;
 
@@ -62,7 +63,7 @@ class GrupoTexto extends ModelClass
 
 	protected function saveAuditMessage(string $message)
     {
-        self::toolBox()::i18nLog(self::AUDIT_CHANNEL)->info($message, [
+		Tools::log(self::AUDIT_CHANNEL)->info($message, [
             '%model%' => $this->modelClassName(),
             '%key%' => $this->primaryColumnValue(),
             '%desc%' => $this->primaryDescription(),
