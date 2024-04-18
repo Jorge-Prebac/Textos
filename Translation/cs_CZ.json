@@ -1,6 +1,5 @@
 {
-    "group-name": "Nombre del Grupo",
-    "text-group": "Grupo del Texto",
-    "text-groups": "Grupos de Texto",
-    "text-name": "Nombre del Texto"
+    "text-group": "Textová skupina",
+    "text-groups": "Textové skupiny",
+    "text-name": "Název textu"
 }
