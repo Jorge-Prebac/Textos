@@ -63,7 +63,7 @@ class GrupoTexto extends ModelClass
 
 	protected function saveAuditMessage(string $message)
     {
-		Tools::log(self::AUDIT_CHANNEL)->info($message, [
+		Tools::log('any_plg')->info($message, [
             '%model%' => $this->modelClassName(),
             '%key%' => $this->primaryColumnValue(),
             '%desc%' => $this->primaryDescription(),
