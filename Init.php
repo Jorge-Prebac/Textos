@@ -21,24 +21,27 @@ namespace FacturaScripts\Plugins\Textos;
 use FacturaScripts\Core\Base\AjaxForms\PurchasesHeaderHTML;
 use FacturaScripts\Core\Base\AjaxForms\SalesHeaderHTML;
 use FacturaScripts\Core\Base\DataBase;
-use FacturaScripts\Core\Base\InitClass;
+use FacturaScripts\Core\Template\InitClass;
 
 /**
  * Description of Init of Textos
  *
  * @author Jorge-Prebac <info@prebac.com>
  */
-class Init extends InitClass
+final class Init extends InitClass
 {
 
-    public function init()
+    public function init(): void
     {
 		PurchasesHeaderHTML::addMod(new Mod\PurchasesHeaderHTMLModTextos());
 		SalesHeaderHTML::addMod(new Mod\SalesHeaderHTMLModTextos());
     }
 	
-	public function update()
+    public function uninstall(): void
     {
-		;
+    }
+
+	public function update(): void
+    {
     }
 }
