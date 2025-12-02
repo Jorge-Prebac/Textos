@@ -1,4 +1,9 @@
 {
+    "click-for-modal": "Obrir Finestra Modal",
+    "copy-to-clipboard": "Copiar al PortaPapers",
+    "edit-text": "Editar el Text",
+    "search-by-name": "Cerca pel Nom del Text",
+    "search-by-notes": "Cercar per la Nota del Text",
     "text-group": "Grup del Text",
     "text-groups": "Grups de Text",
     "text-name": "Nom del Text"

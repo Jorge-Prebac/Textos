@@ -2,8 +2,9 @@
 namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Session;
-use FacturaScripts\Core\Lib\ExtendedController\EditController;
+use FacturaScripts\Core\Tools;
 use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
+use FacturaScripts\Core\Lib\ExtendedController\EditController;
 
 class EditGrupoTexto extends EditController
 
@@ -14,7 +15,7 @@ class EditGrupoTexto extends EditController
         $data = parent::getPageData();
 		$data['menu'] = 'texts';
         $data["title"] = "text-groups";
-        $data["icon"] = "fas fa-layer-group";
+        $data["icon"] = "fa-solid fa-layer-group";
         return $data;
     }
 
@@ -26,13 +27,13 @@ class EditGrupoTexto extends EditController
 		if (!false == $user->can('ListTexto')) {
 			//el usuario tiene acceso
 			$this->createViewsListTextos();
-			$this->setTabsPosition('left-bottom');
+			$this->setTabsPosition('start-bottom');
 		};
     }
 
     public function createViewsListTextos(string $viewName = "ListTexto")
     {
- 		$this->addListView($viewName, "Texto", "texts","fas fa-spell-check");
+ 		$this->addListView($viewName, "Texto", "texts","fa-solid fa-spell-check");
 		$this->views[$viewName]->addOrderBy(['nombretexto'], 'text-name', 1);
 		$this->views[$viewName]->addSearchFields(['nombretexto', 'note']);
     }
@@ -41,7 +42,7 @@ class EditGrupoTexto extends EditController
 	{
         switch ($viewName) {
             case 'ListTexto':
-                $where=[new DataBaseWhere('idgrupotexto',$this->getModel()->primaryColumnValue())];
+                $where=[new DataBaseWhere('idgrupotexto',$this->getModel()->id())];
                 $view->loadData('', $where);
 
             break;

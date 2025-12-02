@@ -1,4 +1,9 @@
 {
+    "click-for-modal": "Open Modal Window",
+    "copy-to-clipboard": "Copy to Clipboard",
+    "edit-text": "Edit the Text",
+    "search-by-name": "Search in the Text Name",
+    "search-by-notes": "Search in the Text Note",
     "text-group": "Text Group",
     "text-groups": "Text Groups",
     "text-name": "Name of the text"

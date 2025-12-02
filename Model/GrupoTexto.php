@@ -2,8 +2,8 @@
 namespace FacturaScripts\Plugins\Textos\Model;
 
 use FacturaScripts\Core\Tools;
-use FacturaScripts\Core\Model\Base\ModelClass;
-use FacturaScripts\Core\Model\Base\ModelTrait;
+use FacturaScripts\Core\Template\ModelClass;
+use FacturaScripts\Core\Template\ModelTrait;
 
 class GrupoTexto extends ModelClass
 {
@@ -15,10 +15,10 @@ class GrupoTexto extends ModelClass
 
     public $fecha;
 
-    public function clear()
+    public function clear(): void
 	{
         parent::clear();
-        $this->fecha = date(ModelClass::DATE_STYLE);
+		$this->fecha = Tools::date();
     }
 
     public static function primaryColumn(): string
@@ -65,10 +65,10 @@ class GrupoTexto extends ModelClass
     {
 		Tools::log('any_plg')->info($message, [
             '%model%' => $this->modelClassName(),
-            '%key%' => $this->primaryColumnValue(),
+            '%key%' => $this->id(),
             '%desc%' => $this->primaryDescription(),
             'model-class' => $this->modelClassName(),
-            'model-code' => $this->primaryColumnValue(),
+            'model-code' => $this->id(),
             'model-data' => $this->toArray()
         ]);
     }

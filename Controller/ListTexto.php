@@ -2,6 +2,8 @@
 namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Session;
+use FacturaScripts\Core\Tools;
+
 
 class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListController
 {
@@ -10,7 +12,7 @@ class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListControll
         $data = parent::getPageData();
 		$data["menu"] = "texts";
         $data["title"] = "texts";
-        $data["icon"] = "fas fa-spell-check";
+        $data["icon"] = "fa-solid fa-spell-check";
         return $data;
     }
 

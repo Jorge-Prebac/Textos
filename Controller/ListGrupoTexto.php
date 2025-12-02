@@ -1,6 +1,9 @@
 <?php
 namespace FacturaScripts\Plugins\Textos\Controller;
 
+use FacturaScripts\Core\Tools;
+
+
 class ListGrupoTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListController
 {
     public function getPageData(): array
@@ -8,7 +11,7 @@ class ListGrupoTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListCon
         $data = parent::getPageData();
         $data["menu"] = "texts";
         $data["title"] = "text-groups";
-        $data["icon"] = "fas fa-layer-group";
+        $data["icon"] = "fa-solid fa-layer-group";
         return $data;
     }
 

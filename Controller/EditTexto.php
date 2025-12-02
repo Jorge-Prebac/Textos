@@ -1,7 +1,9 @@
 <?php
 namespace FacturaScripts\Plugins\Textos\Controller;
-use FacturaScripts\Core\Lib\ExtendedController\EditController;
+
+use FacturaScripts\Core\Tools;
 use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
+use FacturaScripts\Core\Lib\ExtendedController\EditController;
 
 class EditTexto extends EditController
 {
@@ -15,7 +17,7 @@ class EditTexto extends EditController
         $data = parent::getPageData();
 		$data["menu"] = "texts";
         $data["title"] = "texts";
-        $data["icon"] = "fas fa-spell-check";
+        $data["icon"] = "fa-solid fa-spell-check";
         return $data;
     }
 }

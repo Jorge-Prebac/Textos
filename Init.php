@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the AdmReportico plugin, with the Reportico engine, for FacturaScripts
+ * This file is part of the Textos plugin, with the Reportico engine, for FacturaScripts
  * Copyright (C) 2020 Carlos Garcia Gomez <carlos@facturascripts.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,15 +18,16 @@
  */
 namespace FacturaScripts\Plugins\Textos;
 
-use FacturaScripts\Core\Base\AjaxForms\PurchasesHeaderHTML;
-use FacturaScripts\Core\Base\AjaxForms\SalesHeaderHTML;
+use FacturaScripts\Core\Lib\AjaxForms\PurchasesHeaderHTML;
+use FacturaScripts\Core\Lib\AjaxForms\SalesHeaderHTML;
 use FacturaScripts\Core\Base\DataBase;
 use FacturaScripts\Core\Template\InitClass;
+use FacturaScripts\Core\Tools;
 
 /**
  * Description of Init of Textos
  *
- * @author Jorge-Prebac <info@prebac.com>
+ * @author Jorge-Prebac <info@smartcuines.com>
  */
 final class Init extends InitClass
 {
