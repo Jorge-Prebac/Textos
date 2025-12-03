@@ -1,0 +1,13 @@
+.btn-light-grey {
+	background-color: #e2e6ea; /* Gris claro */
+	border-color: #dae0e5;
+	color: #383d41;
+}
+.btn-light-grey:hover {
+	background-color: #d3dbe2;
+}
+#ModalTextGroups .modal-body { min-height: 300px; overflow-y: auto; }
+.truncate-lines {
+	display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+	overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+}

@@ -22,8 +22,9 @@ namespace FacturaScripts\Plugins\Textos\Mod;
 use FacturaScripts\Core\Contract\PurchasesModInterface;
 use FacturaScripts\Core\Model\Base\PurchaseDocument;
 use FacturaScripts\Core\Tools;
+use FacturaScripts\Dinamic\Lib\AssetManager;
 use FacturaScripts\Dinamic\Model\GrupoTexto;
-use FacturaScripts\Dinamic\Model\Texto;									   
+use FacturaScripts\Dinamic\Model\Texto;
 
 /**
  * Description of PurchasesHeaderHTMLModTextos
@@ -42,81 +43,8 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 
     public function assets(): void
     {
-        $btnCopyText = Tools::trans('copy');
-        echo <<<JS
-<script>
-    function copyToClipboard(buttonElement) {
-        const text = buttonElement.getAttribute('data-note');
-        navigator.clipboard.writeText(text).then(function() {
-            const originalIconHTML = buttonElement.innerHTML;
-            const originalTitle = buttonElement.title;
-            buttonElement.classList.remove('btn-light-grey');
-            buttonElement.classList.add('btn-success');
-            buttonElement.innerHTML = '<i class="fas fa-check"></i>';
-            buttonElement.title = 'Copiado';
-
-            setTimeout(() => {
-                buttonElement.innerHTML = originalIconHTML;
-                buttonElement.classList.remove('btn-success');
-                buttonElement.classList.add('btn-light-grey');
-                buttonElement.title = originalTitle;
-            }, 3000); // 3 segundos
-        }, function(err) {
-            console.error('No se pudo copiar el texto: ', err);
-            alert("Error al copiar texto."); 
-        });
-        buttonElement.blur();
-    }
-    function filterTextosTable() {
-        var inputName, filterName, inputNote, filterNote, table, tr, tdName, tdNote, i, txtValueName, txtValueNote;
-        
-        inputName = document.getElementById("searchInputName");
-        filterName = inputName.value.toUpperCase();
-        inputNote = document.getElementById("searchInputNote");
-        filterNote = inputNote.value.toUpperCase();
-        table = document.getElementById("textosTable");
-        var tbody = table.getElementsByTagName("tbody")[0];
-        if (!tbody) return;
-        tr = tbody.getElementsByTagName("tr"); 
-        for (i = 0; i < tr.length; i++) {
-            tdName = tr[i].getElementsByTagName("td")[0]; 
-            tdNote = tr[i].getElementsByTagName("td")[1]; 
-            if (tdName && tdNote) {
-                txtValueName = tdName.textContent || tdName.innerText;
-                txtValueNote = tdNote.textContent || tdNote.innerText;
-                if (txtValueName.toUpperCase().indexOf(filterName) > -1 && txtValueNote.toUpperCase().indexOf(filterNote) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const modalElement = document.getElementById('ModalTextGroups');
-        if (modalElement) {
-            modalElement.addEventListener('hide.bs.modal', function () {
-                this.blur();
-            });
-        }
-    });
-</script>
-<style>
-    .btn-light-grey {
-        background-color: #e2e6ea; /* Gris claro */
-        border-color: #dae0e5;
-        color: #383d41;
-    }
-    .btn-light-grey:hover {
-        background-color: #d3dbe2;
-    }
-    #ModalTextGroups .modal-body { min-height: 300px; overflow-y: auto; }
-    .truncate-lines {
-        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-        overflow: hidden; text-overflow: ellipsis; max-width: 200px;
-    }
-</style>
-JS;
+		AssetManager::addCss(FS_ROUTE . '/Plugins/Textos/Assets/CSS/ModalTextos.css');
+		AssetManager::addJs(FS_ROUTE . '/Plugins/Textos/Assets/JS/ModalTextos.js');
     }
 
 	public function newBtnFields(): array
@@ -163,7 +91,7 @@ JS;
 
 	private static function groupsTextModal(PurchaseDocument $model): string
 	{
-		$html = '<div class="modal fade" id="ModalTextGroups" tabindex="-1" aria-labelledby="ModalTextGroupsLabel" aria-hidden="true">'
+		$html = '<div class="modal fade" id="ModalTextGroups" aria-labelledby="ModalTextGroupsLabel" aria-hidden="true">'
 						. '<div class="modal-dialog modal-dialog-centered modal-lg">'
 						. '<div class="modal-content">'
 						. '<div class="modal-header">'
@@ -173,10 +101,12 @@ JS;
 						. '<div class="modal-body">';
 		$html .= '<div class="row mb-3">';
 		$html .= '<div class="col-md-6">';
-		$html .= '<input type="text" id="searchInputName" onkeyup="filterTextosTable()" placeholder="' . Tools::trans('search-by-name') . '..." class="form-control">';
+		// AÑADE tabindex="-1" aquí:
+		$html .= '<input type="text" id="searchInputName" onkeyup="FS_Textos.filterTextosTable()" placeholder="' . Tools::trans('search-by-name') . '..." class="form-control" tabindex="-1">';
 		$html .= '</div>';
 		$html .= '<div class="col-md-6">';
-		$html .= '<input type="text" id="searchInputNote" onkeyup="filterTextosTable()" placeholder="' . Tools::trans('search-by-notes') . '..." class="form-control">';
+		// Y aquí:
+		$html .= '<input type="text" id="searchInputNote" onkeyup="FS_Textos.filterTextosTable()" placeholder="' . Tools::trans('search-by-notes') . '..." class="form-control" tabindex="-1">';
 		$html .= '</div>';
 		$html .= '</div>';
 
@@ -209,10 +139,10 @@ JS;
 				$html .= "<td>";
 				
 				// Botón Copiar (usa JS y stopPropagation para no interferir si se añade onclick a la fila en el futuro)
-				$html .= "<button type=\"button\" class=\"btn btn-sm btn-light-grey me-1\" onclick=\"event.stopPropagation(); copyToClipboard(this)\" data-note=\"{$noteAttrValue}\" title=\"{$titleTextCopy}\"><i class=\"fas fa-copy\"></i></button>";
+				$html .= "<button type=\"button\" class=\"btn btn-sm btn-light-grey me-1\" onclick=\"event.stopPropagation(); FS_Textos.copyToClipboard(this)\" data-note=\"{$noteAttrValue}\" title=\"{$titleTextCopy}\" tabindex=\"-1\"><i class=\"fas fa-copy\"></i></button>";
 				
 				// Enlace de Editar (usa <a> como botón de Bootstrap)
-				$html .= "<a href=\"{$editorUrl}\" target=\"_blank\" class=\"btn btn-sm btn-light-grey\" title=\"{$titleTextEdit}\">";
+				$html .= "<a href=\"{$editorUrl}\" target=\"_blank\" class=\"btn btn-sm btn-light-grey\" title=\"{$titleTextEdit}\" tabindex=\"-1\">";
 				$html .= "<i class=\"fas fa-edit\"></i>"; // Icono de edición (FontAwesome)
 				$html .= "</a>";
 
