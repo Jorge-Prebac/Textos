@@ -39,30 +39,26 @@ class Texto extends ModelClass
 	{
         return "textos";
     }
-	
-	public function save(): bool
+
+	protected function onInsert(): void
     {
-        if (false === parent::save()) {
-            return false;
-        }
-
-        // Save audit log
-        $this->saveAuditMessage('updated-model');
-
-
-		return true;
+		// Save audit log
+		$this->saveAuditMessage('inserted-model');
+		parent::onInsert();
+    }
+	
+    protected function onUpdate(): void
+    {
+		// Save audit log
+		$this->saveAuditMessage('updated-model');
+        parent::onUpdate();
     }
 
-	public function delete(): bool
+	protected function onDelete(): void
     {
-        if (false === parent::delete()) {
-            return false;
-        }
-
-        // Save audit log
-        $this->saveAuditMessage('deleted-model');
-
-        return true;
+		// Save audit log
+		$this->saveAuditMessage('deleted-model');
+		parent::onDelete();
     }
 
 	protected function saveAuditMessage(string $message)
@@ -73,7 +69,7 @@ class Texto extends ModelClass
             '%desc%' => $this->primaryDescription(),
             'model-class' => $this->modelClassName(),
             'model-code' => $this->id(),
-            'model-data' => $this->toArray()
+            'model-data' => $this->getDirty()
         ]);
     }
 }

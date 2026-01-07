@@ -1,9 +1,9 @@
 {
     "click-for-modal": "Abrir Ventana Modal",
-    "copy-to-clipboard": "Copiar al PortaPapeles",
-    "edit-text": "Editar el Texto",
-    "search-by-name": "Buscar en el Nombre del Texto",
-    "search-by-notes": "Buscar en la Nota del Texto",
+    "copy-to-clipboard": "In die Zwischenablage kopieren",
+    "edit-text": "Text bearbeiten",
+    "search-by-name": "Im Textnamen suchen",
+    "search-by-notes": "Nach Notizen suchen",
     "text-group": "Textgruppe",
     "text-groups": "Textgruppen",
     "text-name": "Textname"

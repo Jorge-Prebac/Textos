@@ -1,9 +1,9 @@
 {
-    "click-for-modal": "Abrir Ventana Modal",
-    "copy-to-clipboard": "Copiar al PortaPapeles",
-    "edit-text": "Editar el Texto",
-    "search-by-name": "Buscar en el Nombre del Texto",
-    "search-by-notes": "Buscar en la Nota del Texto",
+    "click-for-modal": "Otevřít modální okno",
+    "copy-to-clipboard": "Kopírovat do schránky",
+    "edit-text": "Upravte Text",
+    "search-by-name": "Hledat v názvu textu",
+    "search-by-notes": "Vyhledat v textové poznámce",
     "text-group": "Textová skupina",
     "text-groups": "Textové skupiny",
     "text-name": "Název textu"

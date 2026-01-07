@@ -35,30 +35,29 @@ class GrupoTexto extends ModelClass
 	{
         return "grupostextos";
     }
-	
-	public function save(): bool
+
+	protected function onInsert(): void
     {
-        if (false === parent::save()) {
-            return false;
-        }
+		// Save audit log
+		$this->saveAuditMessage('inserted-model');
 
-        // Save audit log
-        $this->saveAuditMessage('updated-model');
+		parent::onInsert();
+    }
+	
+    protected function onUpdate(): void
+    {
+		// Save audit log
+		$this->saveAuditMessage('updated-model');
 
-
-		return true;
+        parent::onUpdate();
     }
 
-	public function delete(): bool
+	protected function onDelete(): void
     {
-        if (false === parent::delete()) {
-            return false;
-        }
+		// Save audit log
+		$this->saveAuditMessage('deleted-model');
 
-        // Save audit log
-        $this->saveAuditMessage('deleted-model');
-
-        return true;
+		parent::onDelete();
     }
 
 	protected function saveAuditMessage(string $message)
@@ -69,7 +68,7 @@ class GrupoTexto extends ModelClass
             '%desc%' => $this->primaryDescription(),
             'model-class' => $this->modelClassName(),
             'model-code' => $this->id(),
-            'model-data' => $this->toArray()
+            'model-data' => $this->getDirty()
         ]);
     }
 }
