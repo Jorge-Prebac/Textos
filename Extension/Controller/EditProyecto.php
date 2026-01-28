@@ -1,7 +1,7 @@
 <?php
 /**
- * This file is part of Textos plugin for FacturaScripts
- * Copyright (C) 2026 Carlos Garcia Gomez <carlos@facturascripts.com>
+ * This file is part of Anticipos plugin for FacturaScripts
+ * Copyright (C) 2025 Carlos Garcia Gomez <carlos@facturascripts.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -17,78 +17,54 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace FacturaScripts\Plugins\Textos\Mod;
+namespace FacturaScripts\Plugins\Textos\Extension\Controller;
 
-use FacturaScripts\Core\Contract\SalesModInterface;
-use FacturaScripts\Core\Model\Base\SalesDocument;
+use Closure;
 use FacturaScripts\Core\Tools;
 use FacturaScripts\Dinamic\Lib\AssetManager;
-use FacturaScripts\Dinamic\Model\GrupoTexto;
 use FacturaScripts\Dinamic\Model\Texto;
 
 /**
- * Description of SalesHeaderHTMLModTextos
+ * Description of EditProyecto
  *
  * @author Jorge-Prebac <info@smartcuines.com>
  */
-class SalesHeaderHTMLModTextos implements SalesModInterface
+ 
+class EditProyecto
 {
-    public function apply(SalesDocument &$model, array $formData): void
-	{
-	}
-
-    public function applyBefore(SalesDocument &$model, array $formData): void
-	{
-	}
-
-    public function assets(): void
+	protected function createViews($viewName = 'EditProyecto'): Closure
     {
-		AssetManager::addCss(FS_ROUTE . '/Plugins/Textos/Assets/CSS/ModalTextos.css');
-		AssetManager::addJs(FS_ROUTE . '/Plugins/Textos/Assets/JS/ModalTextos.js');
-    }
-
-	public function newBtnFields(): array
-	{
-		return ['texto'];
+		return function () {
+			AssetManager::addCss(FS_ROUTE . '/Plugins/Textos/Assets/CSS/ModalTextos.css');
+			AssetManager::addJs(FS_ROUTE . '/Plugins/Textos/Assets/JS/ModalTextos.js');
+			if ($viewName = 'EditProyecto') {
+				//$this->textGroup();
+				$this->groupsTextModal();
+			}
+		};
 	}
 
-	public function newFields(): array
+	/*private static function textGroup(): Closure
 	{
-		return [];
-	}
+		return function () {
+			// ****************** No se utiliza este botón, ya que se incluye en un XMLView *************
+			$tooltipText = Tools::trans('click-for-modal'); 
 
-	public function newModalFields(): array
+			$html = '<div class="col text-center">' //'<div class="col-sm-auto">' 
+				. '<button class="btn btn-primary" type="button" data-bs-toggle="modal" row = "footer_actions"'
+				. 'title="' . htmlspecialchars($tooltipText) . '" ' 
+				. 'data-bs-target="#ModalTextGroups">'
+				. '<i class="fa-solid fa-spell-check"></i> ' . Tools::trans('texts') .  '</button>'
+				. '</div>'
+				. '</div>'
+				. self::groupsTextModal()
+				;
+		};
+	}*/
+
+	private static function groupsTextModal(): Closure
 	{
-		return [];
-	}
-
-    public function renderField(SalesDocument $model, string $field): ?string
-    {
-		if ($field === 'texto') {
-			return self::textGroup($model);
-		}
-        return null;
-    }
-
-	private static function textGroup(SalesDocument $model): string
-	{
-		$tooltipText = Tools::trans('click-for-modal'); 
-
-		$html = '<div class="col-sm-auto">'
-			. '<div class="mb-2">'
-			. '<button class="btn btn-primary" type="button" data-bs-toggle="modal" '
-			. 'title="' . htmlspecialchars($tooltipText) . '" ' 
-			. 'data-bs-target="#ModalTextGroups">'
-			. '<i class="fa-solid fa-spell-check"></i> ' . Tools::trans('texts') .  '</button>'
-			. '</div>'
-			. '</div>'
-			. self::groupsTextModal($model);
-			
-		return $html;
-	}
-
-	private static function groupsTextModal(SalesDocument $model): string
-	{
+		return function () {
 		$html = '<div class="modal fade" id="ModalTextGroups" aria-labelledby="ModalTextGroupsLabel" aria-hidden="true">'
 						. '<div class="modal-dialog modal-dialog-centered modal-lg">'
 						. '<div class="modal-content">'
@@ -153,6 +129,7 @@ class SalesHeaderHTMLModTextos implements SalesModInterface
 						. '</div>'
 						. '</div>'
 						. '</div>';
-		return $html;
+		echo($html);
+		};
 	}
 }

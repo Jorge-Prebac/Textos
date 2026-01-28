@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of the Textos plugin, with the Reportico engine, for FacturaScripts
- * Copyright (C) 2020 Carlos Garcia Gomez <carlos@facturascripts.com>
+ * Copyright (C) 2026 Carlos Garcia Gomez <carlos@facturascripts.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -18,6 +18,7 @@
  */
 namespace FacturaScripts\Plugins\Textos;
 
+use FacturaScripts\Core\Plugins;
 use FacturaScripts\Core\Lib\AjaxForms\PurchasesHeaderHTML;
 use FacturaScripts\Core\Lib\AjaxForms\SalesHeaderHTML;
 use FacturaScripts\Core\Base\DataBase;
@@ -36,6 +37,10 @@ final class Init extends InitClass
     {
 		PurchasesHeaderHTML::addMod(new Mod\PurchasesHeaderHTMLModTextos());
 		SalesHeaderHTML::addMod(new Mod\SalesHeaderHTMLModTextos());
+		
+		if (Plugins::isEnabled('Proyectos')) {
+			$this->loadExtension(new Extension\Controller\EditProyecto());
+		}
     }
 	
     public function uninstall(): void

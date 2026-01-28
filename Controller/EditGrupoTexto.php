@@ -3,7 +3,7 @@ namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Session;
 use FacturaScripts\Core\Tools;
-use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
+use FacturaScripts\Core\Where;
 use FacturaScripts\Core\Lib\ExtendedController\EditController;
 
 class EditGrupoTexto extends EditController
@@ -42,7 +42,7 @@ class EditGrupoTexto extends EditController
 	{
         switch ($viewName) {
             case 'ListTexto':
-                $where=[new DataBaseWhere('idgrupotexto',$this->getModel()->id())];
+				$where = [Where::eq('idgrupotexto',$this->getModel()->id())];
                 $view->loadData('', $where);
 
             break;

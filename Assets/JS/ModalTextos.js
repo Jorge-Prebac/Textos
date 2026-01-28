@@ -17,19 +17,15 @@ FS_Textos.copyToClipboard = function(buttonElement) {
             buttonElement.classList.remove('btn-success');
             buttonElement.classList.add('btn-light-grey');
             buttonElement.title = originalTitle;
-            
-            // Cuando la animación del botón termina, si el modal sigue abierto, 
-            // no hay problema. Si se cerró ya no importa.
+
         }, 3000);
     }, function(err) {
         console.error('No se pudo copiar el texto: ', err);
         alert("Error al copiar texto."); 
     });
-    // Eliminamos blur() de aquí también.
 };
 
 FS_Textos.filterTextosTable = function() {
-    // ... (Tu función filterTextosTable permanece igual) ...
     var inputName, filterName, inputNote, filterNote, table, tr, tdName, tdNote, i, txtValueName, txtValueNote;
 	
 	inputName = document.getElementById("searchInputName");
@@ -62,19 +58,14 @@ $(document).ready(function() {
     if (modalElement.length) {
         // Usa el evento 'hide.bs.modal' de Bootstrap/jQuery
         modalElement.on('hide.bs.modal', function () {
-            // Esto sigue siendo necesario para limpiar cualquier foco residual
             $('#searchInputName').blur();
             $('#searchInputNote').blur();
             $(this).find(':focus').blur();
         });
 
-        // ESTRATEGIA ADICIONAL: Asegurarse de que el foco se maneje correctamente al salir del input
         $('#searchInputName, #searchInputNote').on('focusout', function() {
             // Cuando el usuario sale del input (p. ej., haciendo clic fuera del modal),
             // este evento se dispara y maneja el foco correctamente ANTES del cierre del modal.
         });
     }
-
-    // ELIMINA la estrategia anterior del clic del documento si la pusiste:
-    // $(document).on('click', '[data-bs-dismiss="modal"]', ...); 
 });

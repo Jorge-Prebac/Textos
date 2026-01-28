@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is part of Textos plugin for FacturaScripts
- * Copyright (C) 2025 Carlos Garcia Gomez <carlos@facturascripts.com>
+ * Copyright (C) 2026 Carlos Garcia Gomez <carlos@facturascripts.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
@@ -72,12 +72,10 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 
 	private static function textGroup(PurchaseDocument $model): string
 	{
-		// Llama a Tools::trans() para obtener el texto del tooltip
 		$tooltipText = Tools::trans('click-for-modal'); 
 
 		$html = '<div class="col-sm-auto">'
 			. '<div class="mb-2">'
-			// El tooltip nativo de Bootstrap sigue funcionando perfectamente
 			. '<button class="btn btn-primary" type="button" data-bs-toggle="modal" '
 			. 'title="' . htmlspecialchars($tooltipText) . '" ' 
 			. 'data-bs-target="#ModalTextGroups">'
@@ -101,11 +99,9 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 						. '<div class="modal-body">';
 		$html .= '<div class="row mb-3">';
 		$html .= '<div class="col-md-6">';
-		// AÑADE tabindex="-1" aquí:
 		$html .= '<input type="text" id="searchInputName" onkeyup="FS_Textos.filterTextosTable()" placeholder="' . Tools::trans('search-by-name') . '..." class="form-control" tabindex="-1">';
 		$html .= '</div>';
 		$html .= '<div class="col-md-6">';
-		// Y aquí:
 		$html .= '<input type="text" id="searchInputNote" onkeyup="FS_Textos.filterTextosTable()" placeholder="' . Tools::trans('search-by-notes') . '..." class="form-control" tabindex="-1">';
 		$html .= '</div>';
 		$html .= '</div>';
@@ -119,21 +115,19 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 			$html .= '<thead><tr>';
 			$html .= '<th>' . Tools::trans('text-name') . '</th>';
 			$html .= '<th>' . Tools::trans('notes') . '</th>';
-			$html .= '<th>' . Tools::trans('action') . '</th>'; // Columna de Acción
+			$html .= '<th>' . Tools::trans('action') . '</th>';
 			$html .= '</tr></thead><tbody>';
 			
 			foreach ($allTexts as $texto) {
-				// Asumo que el objeto Texto tiene un método 'url()' como en tu ejemplo antiguo
 				$editorUrl = $texto->url(); 
 
-				// Fila de la tabla normal (ya no es clicable entera)
 				$html .= '<tr>';
 				$html .= '<td>' . htmlspecialchars($texto->nombretexto) . '</td>'; 
 				$html .= '<td><div class="truncate-lines">' . htmlspecialchars($texto->note) . '</div></td>';
 				
 				$noteAttrValue = htmlspecialchars($texto->note, ENT_QUOTES | ENT_HTML5);
 				$titleTextCopy = Tools::trans('copy-to-clipboard');
-				$titleTextEdit = Tools::trans('edit-text'); // Nueva clave de traducción para "Editar texto"
+				$titleTextEdit = Tools::trans('edit-text');
 
 				// Columna de Acción con el botón de Copiar Y el botón/enlace de Editar
 				$html .= "<td>";
@@ -143,7 +137,7 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 				
 				// Enlace de Editar (usa <a> como botón de Bootstrap)
 				$html .= "<a href=\"{$editorUrl}\" target=\"_blank\" class=\"btn btn-sm btn-light-grey\" title=\"{$titleTextEdit}\" tabindex=\"-1\">";
-				$html .= "<i class=\"fas fa-edit\"></i>"; // Icono de edición (FontAwesome)
+				$html .= "<i class=\"fas fa-edit\"></i>";
 				$html .= "</a>";
 
 				$html .= "</td>";
