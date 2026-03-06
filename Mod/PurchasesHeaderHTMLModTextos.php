@@ -95,7 +95,7 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 						. '<div class="modal-header">'
 						. '<i class="fa-solid fa-layer-group fa-2x me-2"></i>'
 						. '<h5 class="modal-title me-auto">' . Tools::trans('texts') . '</h5>'
-						. '</div>'
+						. '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . Tools::trans('close') . '"></button>'
 						. '<div class="modal-body">';
 		$html .= '<div class="row mb-3">';
 		$html .= '<div class="col-md-6">';

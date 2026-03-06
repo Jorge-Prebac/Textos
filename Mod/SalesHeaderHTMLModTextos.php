@@ -95,6 +95,7 @@ class SalesHeaderHTMLModTextos implements SalesModInterface
 						. '<div class="modal-header">'
 						. '<i class="fa-solid fa-layer-group fa-2x me-2"></i>'
 						. '<h5 class="modal-title me-auto">' . Tools::trans('texts') . '</h5>'
+						. '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . Tools::trans('close') . '"></button>'
 						. '</div>'
 						. '<div class="modal-body">';
 		$html .= '<div class="row mb-3">';
