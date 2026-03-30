@@ -2,9 +2,9 @@
 namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Tools;
+use FacturaScripts\Core\Lib\ExtendedController\ListController;
 
-
-class ListGrupoTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListController
+class ListGrupoTexto extends ListController
 {
     public function getPageData(): array
     {

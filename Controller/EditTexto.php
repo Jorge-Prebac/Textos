@@ -2,7 +2,6 @@
 namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Tools;
-use FacturaScripts\Core\Base\DataBase\DataBaseWhere;
 use FacturaScripts\Core\Lib\ExtendedController\EditController;
 
 class EditTexto extends EditController

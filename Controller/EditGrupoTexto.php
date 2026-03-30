@@ -7,7 +7,6 @@ use FacturaScripts\Core\Where;
 use FacturaScripts\Core\Lib\ExtendedController\EditController;
 
 class EditGrupoTexto extends EditController
-
 {
     public function getPageData(): array 
 	{

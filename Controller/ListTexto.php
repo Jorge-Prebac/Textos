@@ -3,9 +3,9 @@ namespace FacturaScripts\Plugins\Textos\Controller;
 
 use FacturaScripts\Core\Session;
 use FacturaScripts\Core\Tools;
+use FacturaScripts\Core\Lib\ExtendedController\ListController;
 
-
-class ListTexto extends \FacturaScripts\Core\Lib\ExtendedController\ListController
+class ListTexto extends ListController
 {
     public function getPageData(): array
     {
