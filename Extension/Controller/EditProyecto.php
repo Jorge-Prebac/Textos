@@ -55,7 +55,8 @@ class EditProyecto
                 . '<div class="modal-header">'
                 . '<i class="fa-solid fa-layer-group fa-2x me-2"></i>'
                 . '<h5 class="modal-title me-auto" id="modalTextGroupsLabel">' . Tools::trans('texts') . '</h5>'
-                . '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . Tools::trans('close') . '"></button>'
+                . '<button type="button" class="btn-close" data-bs-dismiss="modal" title="' . Tools::trans('close') . '"></button>'
+				. '&nbsp' . Tools::trans('close') 
                 . '</div>'
                 // --- modal-body ---
                 . '<div class="modal-body">';
