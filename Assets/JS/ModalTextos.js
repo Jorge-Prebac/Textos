@@ -53,7 +53,7 @@ FS_Textos.filterTextosTable = function() {
 
 // --- Manejo del Foco con jQuery ---
 $(document).ready(function() {
-    const modalElement = $('#ModalTextGroups');
+    const modalElement = $('#modalTextGroups');
 
     if (modalElement.length) {
         // Usa el evento 'hide.bs.modal' de Bootstrap/jQuery

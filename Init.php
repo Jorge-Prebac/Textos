@@ -37,7 +37,12 @@ final class Init extends InitClass
     {
 		PurchasesHeaderHTML::addMod(new Mod\PurchasesHeaderHTMLModTextos());
 		SalesHeaderHTML::addMod(new Mod\SalesHeaderHTMLModTextos());
-		
+
+		if (Plugins::isEnabled('Anticipos')) {		
+			$this->loadExtension(new Extension\Controller\EditAnticipo());
+			$this->loadExtension(new Extension\Controller\EditAnticipoP());
+		}
+
 		if (Plugins::isEnabled('Proyectos')) {
 			$this->loadExtension(new Extension\Controller\EditProyecto());
 		}

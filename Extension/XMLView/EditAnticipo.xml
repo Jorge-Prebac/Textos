@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view>
+	<rows>
+	   <row type="actions">
+		  <button type="modal" action="TextGroups" color="primary" icon="fa-solid fa-spell-check" label="texts" title="click-for-modal" />
+	   </row>
+	</rows>
+</view>

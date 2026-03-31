@@ -14,7 +14,7 @@ class TextosHtmlModal
             . '<div class="mb-2">'
             . '<button class="btn btn-primary" type="button" data-bs-toggle="modal" '
             . 'title="' . htmlspecialchars($tooltipText) . '" '
-            . 'data-bs-target="#ModalTextGroups">'
+            . 'data-bs-target="#modalTextGroups">'
             . '<i class="fa-solid fa-spell-check"></i> ' . Tools::trans('texts') . '</button>'
             . '</div>'
             . '</div>'
@@ -23,9 +23,9 @@ class TextosHtmlModal
         return $html;
     }
 
-    private static function groupsTextModal(): string
+    public static function groupsTextModal(): string
     {
-        $html = '<div class="modal fade" id="ModalTextGroups" aria-labelledby="ModalTextGroupsLabel" aria-hidden="true">'
+        $html = '<div class="modal fade" id="modalTextGroups" aria-labelledby="modalTextGroupsLabel" aria-hidden="true">'
             . '<div class="modal-dialog modal-dialog-centered modal-lg">'
             . '<div class="modal-content">'
             . '<div class="modal-header">'

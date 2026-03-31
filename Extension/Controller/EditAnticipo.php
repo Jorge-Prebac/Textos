@@ -26,12 +26,12 @@ use FacturaScripts\Dinamic\Lib\TextosHtmlModal;
 use FacturaScripts\Dinamic\Model\Texto;
 
 /**
- * Description of EditProyecto
+ * Description of EditAnticipo
  *
  * @author Jorge-Prebac <info@smartcuines.com>
  */
  
-class EditProyecto
+class EditAnticipo
 {
     public function createViews(): Closure
     {
