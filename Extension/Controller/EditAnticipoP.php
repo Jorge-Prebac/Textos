@@ -23,7 +23,6 @@ use Closure;
 use FacturaScripts\Core\Tools;
 use FacturaScripts\Dinamic\Lib\AssetManager;
 use FacturaScripts\Dinamic\Lib\TextosHtmlModal;
-use FacturaScripts\Dinamic\Model\Texto;
 
 /**
  * Description of EditAnticipoP

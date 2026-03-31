@@ -23,9 +23,8 @@ use FacturaScripts\Core\Contract\PurchasesModInterface;
 use FacturaScripts\Core\Model\Base\PurchaseDocument;
 use FacturaScripts\Core\Tools;
 use FacturaScripts\Dinamic\Lib\AssetManager;
+use FacturaScripts\Dinamic\Lib\TextosHtmlModal;
 use FacturaScripts\Dinamic\Model\GrupoTexto;
-use FacturaScripts\Dinamic\Model\Texto;
-use FacturaScripts\Plugins\Textos\Lib\TextosHtmlModal;
 
 /**
  * Description of PurchasesHeaderHTMLModTextos
