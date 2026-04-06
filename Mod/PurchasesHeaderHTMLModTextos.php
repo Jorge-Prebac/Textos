@@ -43,8 +43,9 @@ class PurchasesHeaderHTMLModTextos implements PurchasesModInterface
 
     public function assets(): void
     {
-		AssetManager::addCss(FS_ROUTE . '/Plugins/Textos/Assets/CSS/ModalTextos.css');
-		AssetManager::addJs(FS_ROUTE . '/Plugins/Textos/Assets/JS/ModalTextos.js');
+		$route = Tools::config('route');
+		AssetManager::add('css', $route . '/Dinamic/Assets/CSS/ModalTextos.css');
+		AssetManager::add('js', $route . '/Dinamic/Assets/JS/ModalTextos.js');
     }
 
 	public function newBtnFields(): array
